@@ -32,23 +32,30 @@ const Node = (attributes) => {
                 </tr>
             </table>
         </div>
-        <ChildrenNode children={node.children} level={level}/>
+        <ChildrenNode children={node.children} level={level} actual_id={node.distributor_id}/>
     </div>
   );
 }
 
+const show_hide_1 = (id) => {
+    const element = document.getElementById(id)
+    element.style.display = 'grid'
 
+    const elementButton = document.getElementById('button-'+id)
+    elementButton.style.display = 'none'
+}
+
+const nodeCreation = (node, level) => {
+    return(
+        <div>
+            <Node data={node} level={level}/>
+            <button id={'button-'+node.distributor_id}  onClick={() => {show_hide_1(node.distributor_id)}}>+</button>
+        </div>
+    );
+}
 
 const ChildrenNode = (attributes) => {
     const children = attributes.children
-
-    const show_hide_1 = (id) => {
-        const element = document.getElementById(id)
-        element.style.display = 'grid'
-
-        const elementButton = document.getElementById('button-'+id)
-        elementButton.style.display = 'none'
-    }
 
     if(children != undefined) {
         const level = attributes.level
@@ -66,19 +73,13 @@ const ChildrenNode = (attributes) => {
             } else if(level == 3) {
                 return (
                     <div id={id_parent} className="Node-item-1">
-                        <div>
-                            <Node data={children[0]} level={level}/>
-                            <button id={'button-'+children[0].distributor_id} onClick={() => {show_hide_1(children[0].distributor_id)}}>+</button>
-                        </div>
+                        {nodeCreation(children[0], level)}
                     </div>
                 );
             } else {
                 return (
                     <div id={id_parent} style={{display:"none"}} className="Node-item-1">
-                        <div>
-                            <Node data={children[0]} level={level}/>
-                            <button id={'button-'+children[0].distributor_id} onClick={() => {show_hide_1(children[0].distributor_id)}}>+</button>
-                        </div>
+                        {nodeCreation(children[0], level)}
                     </div>
                 );
             }
@@ -108,27 +109,15 @@ const ChildrenNode = (attributes) => {
             } else if(level == 3) {
                 return (
                     <div id={id_parent} className="Node-item-2">
-                        <div>
-                            <Node data={placement.left} level={level}/>
-                            <button id={'button-'+placement.left.distributor_id}  onClick={() => {show_hide_1(placement.left.distributor_id)}}>+</button>
-                        </div>
-                        <div>
-                            <Node data={placement.right} level={level}/>
-                            <button id={'button-'+placement.right.distributor_id}  onClick={() => {show_hide_1(placement.right.distributor_id)}}>+</button>
-                        </div>
+                        {nodeCreation(placement.left, level)}
+                        {nodeCreation(placement.right, level)}
                     </div>
                 );
             } else {
                 return (
                     <div id={id_parent} style={{display:"none"}} className="Node-item-2">
-                        <div>
-                            <Node data={placement.left} level={level}/>
-                            <button id={'button-'+placement.left.distributor_id}  onClick={() => {show_hide_1(placement.left.distributor_id)}}>+</button>
-                        </div>
-                        <div>
-                            <Node data={placement.right} level={level}/>
-                            <button id={'button-'+placement.right.distributor_id}  onClick={() => {show_hide_1(placement.right.distributor_id)}}>+</button>
-                        </div>
+                        {nodeCreation(placement.left, level)}
+                        {nodeCreation(placement.right, level)}
                     </div>
                 );
             }
