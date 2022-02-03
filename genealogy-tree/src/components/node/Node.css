@@ -1,0 +1,69 @@
+.Node-item-1 { 
+    display: grid; 
+    grid-template-columns: repeat(1, 1fr); 
+    grid-gap: 50px 
+}
+
+.Node-item-2 { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 50px 
+}
+
+.title {
+    color: white;
+    font-size: 15px;
+    margin-block-end: 0.5em;
+    grid-gap: 150px; 
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+td {
+  white-space: nowrap;
+}
+
+tr {
+    text-align: left;
+    white-space: nowrap;
+}
+
+h6 {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+.card-profile {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.card-profile .card-avatar, .card-testimonial .card-avatar {
+    max-width: 130px;
+    max-height: 130px;
+    margin: -50px auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+}
+
+img, svg {
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.category {
+    background-color: red;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
